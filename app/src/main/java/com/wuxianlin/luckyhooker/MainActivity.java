@@ -33,6 +33,7 @@ public class MainActivity extends Activity {
 
         private static final String KEY_APPS = "apps_settings";
         private static final String[] switchPackageNames = new String[]{
+                XiaoHaiZi.hookPackageName,
                 HaiXing.hookPackageName,
                 KSWEB.hookPackageName,
                 KuWo.hookPackageNames[0],

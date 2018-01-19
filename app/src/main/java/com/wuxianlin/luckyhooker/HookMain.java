@@ -30,6 +30,7 @@ public class HookMain implements IXposedHookZygoteInit, IXposedHookLoadPackage, 
     private static final File prefsFileProt = new File("/data/user_de/0/" + PACKAGE_NAME + "/shared_prefs/" + PACKAGE_NAME + "_preferences.xml");
 
     public HookMain(){
+        hooks.add(new XiaoHaiZi());
         hooks.add(new HaiXing());
         hooks.add(new KSWEB());
         hooks.add(new KuWo());
