@@ -29,7 +29,9 @@ public class HookMain implements IXposedHookZygoteInit, IXposedHookLoadPackage, 
     public static String MODULE_PATH = null;
     private static final File prefsFileProt = new File("/data/user_de/0/" + PACKAGE_NAME + "/shared_prefs/" + PACKAGE_NAME + "_preferences.xml");
 
-    public HookMain(){
+    public HookMain() {
+        hooks.add(new BrakeFieldDesign());
+        hooks.add(new BrakeFieldPainter());
         hooks.add(new XiaoHaiZi());
         hooks.add(new HaiXing());
         hooks.add(new KSWEB());

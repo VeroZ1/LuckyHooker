@@ -33,6 +33,8 @@ public class MainActivity extends Activity {
 
         private static final String KEY_APPS = "apps_settings";
         private static final String[] switchPackageNames = new String[]{
+                BrakeFieldDesign.hookPackageName,
+                BrakeFieldPainter.hookPackageName,
                 XiaoHaiZi.hookPackageName,
                 HaiXing.hookPackageName,
                 KSWEB.hookPackageName,
@@ -67,7 +69,7 @@ public class MainActivity extends Activity {
             addPreferencesFromResource(R.xml.pref_luckyhooker);
             PreferenceCategory Apps = (PreferenceCategory) findPreference(KEY_APPS);
             List<Map<String, String>> switchAppList = getSwitchAppList();
-            for (Map map : switchAppList){
+            for (Map map : switchAppList) {
                 String appName = map.get("appName").toString();
                 String packageName = map.get("packageName").toString();
                 SwitchPreference switchPreference = new SwitchPreference(getActivity());
@@ -79,10 +81,10 @@ public class MainActivity extends Activity {
             }
         }
 
-        private List<Map<String, String>> getSwitchAppList(){
+        private List<Map<String, String>> getSwitchAppList() {
             List<Map<String, String>> switchAppList = new ArrayList();
             List<Map<String, String>> appList = getAppList();
-            for (Map map : appList){
+            for (Map map : appList) {
                 if (Arrays.asList(switchPackageNames).contains(map.get("packageName")))
                     switchAppList.add(map);
             }
@@ -94,8 +96,8 @@ public class MainActivity extends Activity {
             List<PackageInfo> packages = pm.getInstalledPackages(0);
             List<Map<String, String>> appList = new ArrayList();
             for (PackageInfo pi : packages) {
-                if ((pi.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM)==0 &&
-                        (pi.applicationInfo.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP)==0){
+                if ((pi.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0 &&
+                        (pi.applicationInfo.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) == 0) {
                     Map<String, String> map = new HashMap<String, String>();
                     map.put("packageName", pi.packageName);
                     map.put("appName", pi.applicationInfo.loadLabel(pm).toString());
